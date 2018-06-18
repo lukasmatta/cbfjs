@@ -15,7 +15,7 @@ npm install cbfjs
 
 ## Usage
 
-TODO
+**Not usable yet!**
 
 ## Versioning
 
