@@ -1,0 +1,27 @@
+{
+  "name": "cbfjs",
+  "version": "1.0.0",
+  "description": "Cross-browser fingerprinting library written in JavaScript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lukasmatta/cbfjs.git"
+  },
+  "keywords": [
+    "fingerprinting",
+    "cross-browser"
+  ],
+  "author": "Lukáš Matta",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/lukasmatta/cbfjs/issues"
+  },
+  "homepage": "https://github.com/lukasmatta/cbfjs#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-closure-compiler": "^0.4.0"
+  }
+}
