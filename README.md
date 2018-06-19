@@ -19,7 +19,7 @@ npm install cbfjs
 
 ```js
 new CBFjs().get(function(hash, components) {
-  console.log(result) // a hash, representing your device fingerprint
+  console.log(hash) // a hash, representing your device fingerprint
   console.log(components) // an array of CBFjs components
 })
 ```
