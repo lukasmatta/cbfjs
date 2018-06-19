@@ -5,6 +5,8 @@ Cross-browser fingerprinting library written in JavaScript.
 
 To use CBFjs, simply include `dist/cbf.min.js`.
 
+This library requires [core_estimator](https://github.com/oftn-oswg/core-estimator) library for core number estimation. You need to import it manually before importing CBFjs.
+
 CBFjs is also available for download via [npm](https://www.npmjs.com/package/cbfjs).
 
 ### npm
@@ -15,7 +17,12 @@ npm install cbfjs
 
 ## Usage
 
-**Not usable yet!**
+```js
+new CBFjs().get(function(hash, components) {
+  console.log(result) // a hash, representing your device fingerprint
+  console.log(components) // an array of CBFjs components
+})
+```
 
 ## Versioning
 
