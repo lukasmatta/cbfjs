@@ -1,27 +1,40 @@
 {
   "name": "cbfjs",
-  "version": "1.0.1",
+  "version": "0.0.0-development",
   "description": "Cross-browser fingerprinting library written in JavaScript.",
-  "main": "index.js",
+  "main": "dist/cbf.min.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "commit": "git-cz",
+    "test": "mocha src/cbfjs.test.js -w",
+    "test:single": "mocha src/cbfjs.test.js",
+    "semantic-release": "semantic-release",
+    "travis-deploy-once": "travis-deploy-once"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lukasmatta/cbfjs.git"
+    "url": "https://github.com/lukasmatta/cbfjs.git"
   },
   "keywords": [
     "fingerprinting",
     "cross-browser"
   ],
-  "author": "Lukáš Matta",
+  "author": "Lukáš Matta <lukas@matta.sk> (http://www.matta.sk)",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/lukasmatta/cbfjs/issues"
   },
   "homepage": "https://github.com/lukasmatta/cbfjs#readme",
   "devDependencies": {
+    "chai": "^4.1.2",
+    "commitizen": "^2.10.1",
+    "cz-conventional-changelog": "^2.1.0",
     "gulp": "^3.9.1",
-    "gulp-closure-compiler": "^0.4.0"
+    "gulp-closure-compiler": "^0.4.0",
+    "mocha": "^5.2.0",
+    "semantic-release": "^15.6.3",
+    "travis-deploy-once": "^5.0.1"
+  },
+  "czConfig": {
+    "path": "node_modules/cz-conventional-changelog"
   }
 }
