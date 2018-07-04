@@ -179,4 +179,4 @@
         module.exports = CBFjs;
     }
     scope.CBFjs = CBFjs;
-})(window);
+})(this);
