@@ -1,4 +1,6 @@
 language: node_js
+install:
+  - npm install -g codecov
 cache:
   directories:
     - ~/.npm
@@ -10,11 +12,11 @@ node_js:
   - '6'
   - '4'
 script:
-    - npm run test:single
-    - npm run check-coverage
+   - npm run test:single
+   - npm run check-coverage
 after_success:
   - npm run report-coverage
-  - npm run upload-coverage
+  - codecov
   - npm run travis-deploy-once "npm run semantic-release"
 branches:
   except:
