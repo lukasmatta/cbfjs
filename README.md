@@ -1,4 +1,10 @@
 # CBFjs
+
+[![npm](https://img.shields.io/npm/v/cbfjs.svg)](https://www.npmjs.com/package/cbfjs)
+[![travis build](https://api.travis-ci.org/lukasmatta/cbfjs.svg?branch=master)](https://travis-ci.org/lukasmatta/cbfjs)
+[![Codecov](https://img.shields.io/codecov/c/github/lukasmatta/cbfjs.svg)](https://codecov.io/gh/lukasmatta/cbfjs/)
+![npm](https://img.shields.io/npm/l/cbfjs.svg)
+
 Cross-browser fingerprinting library written in JavaScript.
 
 ## Installation
