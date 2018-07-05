@@ -154,6 +154,7 @@
 
     if (typeof module === 'object' && typeof exports !== "undefined") {
         module.exports = Detector;
+    } else {
+        scope.Detector = Detector;
     }
-    scope.Detector = Detector;
 })(window);

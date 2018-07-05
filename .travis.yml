@@ -13,12 +13,13 @@ node_js:
   - '6'
   - '4'
 script:
-   - npm run test:single
+   - npm run cover
    - npm run check-coverage
+   - npm run build
 after_success:
   - npm run report-coverage
   - codecov
   - npm run travis-deploy-once "npm run semantic-release"
 branches:
-  except:
-    - /^v\d+\.\d+\.\d+$/
+  only:
+    - master

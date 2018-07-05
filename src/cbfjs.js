@@ -170,6 +170,7 @@
 
     if (typeof module === 'object' && typeof exports !== "undefined") {
         module.exports = CBFjs;
+    } else {
+        scope.CBFjs = CBFjs;
     }
-    scope.CBFjs = CBFjs;
 })(this);
