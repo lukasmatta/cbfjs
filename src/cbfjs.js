@@ -92,9 +92,11 @@
          Get list of fonts
          */
         getFonts: function() {
-            var fontDetective = new Detector();
-            var fonts = fontDetective.testAllFonts();
-            return fonts;
+            document.addEventListener("DOMContentLoaded", function(event) {
+                var fontDetective = new Detector();
+                var fonts = fontDetective.testAllFonts();
+                return fonts;
+            });
         },
 
         /*
