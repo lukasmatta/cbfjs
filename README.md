@@ -13,6 +13,11 @@ To use CBFjs, simply include `dist/cbfjs.udm.min.js`.
 
 CBFjs is also available for download via [npm](https://www.npmjs.com/package/cbfjs).
 
+### CDN
+```shell
+//cdn.jsdelivr.net/npm/cbfjs@latest/dist/cbfjs.umd.min.js
+```
+
 ### npm
 
 ```shell
