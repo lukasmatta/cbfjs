@@ -11,6 +11,7 @@ node_js:
   - '4'
 script:
     - npm run test:single
+    - npm run check-coverage
 after_success:
   - npm run travis-deploy-once "npm run semantic-release"
 branches:

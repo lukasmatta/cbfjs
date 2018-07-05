@@ -8,21 +8,15 @@
 
     /* Helpers */
 
-    // // detect zoom
-    // var detectZoom = require('./helpers/detect-zoom/detect-zoom.js');
-    //
-    // // core estimator to estimate number of cores of CPU
-    // //var coreEstimator = require('./helpers/core_estimator/core-estimator.js');
-    //
-    // // murmurhash3 non crypto hash library for hash generation
-    // // core estimator to estimate number of cores of CPU
-    // var murmurHash3 = require('./helpers/murmurhash3/murmurHash3.js');
-    //
-    // // font detector
-    // var fontdetect = require('./helpers/font-detect/fontdetect.js');
-    //
-    // // User agent parser
-    // var UAParser = require('./helpers/ua-parser/UAParser.js');
+    // murmurhash3 non crypto hash library for hash generation
+    // core estimator to estimate number of cores of CPU
+    var murmurHash3 = require('./vendors/murmurhash3/murmurHash3.js');
+
+    // font detector
+    var Detector = require('./vendors/font-detect/fontdetect.js');
+
+    // User agent parser
+    var UAParser = require('./vendors/ua-parser/UAParser.js');
 
     var CBFjs = function () {
     };
@@ -33,9 +27,8 @@
          Get screen resolution
          */
         getScreenResolution: function () {
-            var zoom_level = detectZoom.device();
-            var fixed_width = window.screen.width * zoom_level;
-            var fixed_height = window.screen.height * zoom_level;
+            var fixed_width = window.screen.width;
+            var fixed_height = window.screen.height;
             var res = Math.round(fixed_width / fixed_height * 100) / 100
             return res;
         },

@@ -6,9 +6,11 @@
   "scripts": {
     "commit": "git-cz",
     "test": "mocha src/cbfjs.test.js -w",
-    "test:single": "mocha src/cbfjs.test.js",
+    "test:single": "nyc mocha src/cbfjs.test.js",
     "semantic-release": "semantic-release",
-    "travis-deploy-once": "travis-deploy-once"
+    "travis-deploy-once": "travis-deploy-once",
+    "check-coverage": "nyc check-coverage --lines 40 --functions 40 --branches 40",
+    "coverage-report": "nyc report --reporter=lcov"
   },
   "repository": {
     "type": "git",
@@ -28,9 +30,12 @@
     "chai": "^4.1.2",
     "commitizen": "^2.10.1",
     "cz-conventional-changelog": "^2.1.0",
+    "ghooks": "^2.0.4",
     "gulp": "^3.9.1",
     "gulp-closure-compiler": "^0.4.0",
     "mocha": "^5.2.0",
+    "mock-browser": "^0.92.14",
+    "nyc": "^12.0.2",
     "semantic-release": "^15.6.3",
     "travis-deploy-once": "^5.0.1"
   },
@@ -39,7 +44,12 @@
   },
   "config": {
     "ghooks": {
-      "pre-commit": "npm run test:single"
+      "pre-commit": "npm run test:single && npm run check-coverage"
     }
+  },
+  "nyc": {
+    "include": [
+      "src/cbfjs.js"
+    ]
   }
 }
