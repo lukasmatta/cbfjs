@@ -6,7 +6,9 @@ global.navigator = mock.getNavigator();
 global.screen = mock.getWindow().screen;
 global.screen.colorDepth = 24;
 global.document = mock.getDocument();
-window.navigator.userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X x.y; rv:42.0) Gecko/20100101 Firefox/42.0";
+Object.defineProperty(window.navigator, 'userAgent', {
+    value: "Mozilla/5.0 (Macintosh; Intel Mac OS X x.y; rv:42.0) Gecko/20100101 Firefox/42.0"
+});
 
 var CBFjs = require('./cbfjs');
 
