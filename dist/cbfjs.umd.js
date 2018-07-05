@@ -260,9 +260,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
          Get list of fonts
          */
         getFonts: function getFonts() {
-            var fontDetective = new Detector();
-            var fonts = fontDetective.testAllFonts();
-            return fonts;
+            document.addEventListener("DOMContentLoaded", function (event) {
+                var fontDetective = new Detector();
+                var fonts = fontDetective.testAllFonts();
+                return fonts;
+            });
         },
 
         /*
