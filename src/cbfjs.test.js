@@ -1,22 +1,21 @@
 var expect = require('chai').expect;
-var MockBrowser = require('mock-browser').mocks.MockBrowser;
-var mock = new MockBrowser();
-global.window = mock.getWindow();
-global.navigator = mock.getNavigator();
-global.screen = mock.getWindow().screen;
-global.screen.colorDepth = 24;
-global.document = mock.getDocument();
-Object.defineProperty(window.navigator, 'userAgent', {
-    value: "Mozilla/5.0 (Macintosh; Intel Mac OS X x.y; rv:42.0) Gecko/20100101 Firefox/42.0"
-});
+// Simulates browser with it's dom elements (window, document, etc.) inside Node.js
+var jsdom = require('mocha-jsdom');
 
-var CBFjs = require('./cbfjs');
+//var CBFjs = require('./cbfjs');
 
 describe('CBFjs', function() {
-    describe('new', function () {
-        it('creates a new instance of CBFjs', function () {
-            expect(new CBFjs()).to.not.be.null
-        })
+
+    var CBFjs
+    jsdom()
+
+    before(function () {
+        CBFjs = require('./cbfjs')
+    })
+
+    it('creates a new instance of CBFjs', function () {
+        var cbfjs = new CBFjs();
+        expect(cbfjs).to.not.be.null
     })
 
     describe('getScreenResolution', function () {
@@ -58,6 +57,14 @@ describe('CBFjs', function() {
     describe('isMobile', function () {
         it('is mobile phone', function() {
             expect((new CBFjs()).isMobile()).to.be.a('boolean')
+        })
+    })
+
+    describe('getFonts', function () {
+        it('creates font detector', function() {
+            var cbfjs = new CBFjs();
+            expect(cbfjs.getFonts()).to.not.be.null;
+            console.log(cbfjs.getFonts());
         })
     })
 
