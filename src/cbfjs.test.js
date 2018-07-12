@@ -11,11 +11,26 @@ describe('CBFjs', function() {
 
     before(function () {
         CBFjs = require('./cbfjs')
+        Object.defineProperty(window.navigator, 'userAgent', {
+            value: "Mozilla/5.0 (Macintosh; Intel Mac OS X x.y; rv:42.0) Gecko/20100101 Firefox/42.0"
+        });
     })
 
     it('creates a new instance of CBFjs', function () {
         var cbfjs = new CBFjs();
         expect(cbfjs).to.not.be.null
+    })
+
+    describe('getCPUcores', function () {
+        var testValue;
+        var testFunc = function(cores) {
+            testValue = cores;
+        };
+
+        it('gets number of cpu cores', function() {
+            (new CBFjs()).getCPUCores(testFunc);
+            expect(testValue).to.be.a('number')
+        })
     })
 
     describe('getScreenResolution', function () {
@@ -63,9 +78,15 @@ describe('CBFjs', function() {
     describe('getFonts', function () {
         it('creates font detector', function() {
             var cbfjs = new CBFjs();
-            expect(cbfjs.getFonts()).to.not.be.null;
-            console.log(cbfjs.getFonts());
+            var fonts = cbfjs.getFonts()
+            expect(fonts).to.not.be.null
         })
     })
+
+    // describe('getCPUarchitecture', function () {
+    //     it('returns cpu architecture value', function() {
+    //         expect((new CBFjs()).getCPUarchitecture()).to.not.be.undefined
+    //     })
+    // })
 
 })
