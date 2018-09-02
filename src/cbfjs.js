@@ -33,16 +33,24 @@
             return res;
         },
 
+        // /*
+        // Get number of CPU cores
+        // Future async function TODO implement with core_estimator library
+        // */
+        // getCPUCores: function (done) {
+        //     if (!navigator.getHardwareConcurrency) {
+        //         return done(-1);
+        //     } else {
+        //         navigator.getHardwareConcurrency(done);
+        //         return;
+        //     }
+        // },
+
         /*
         Get number of CPU cores
         */
-        getCPUCores: function (done) {
-            if (!navigator.getHardwareConcurrency) {
-                return done(-1);
-            } else {
-                navigator.getHardwareConcurrency(done);
-                return;
-            }
+        getCPUCores: function () {
+            return navigator.hardwareConcurrency;
         },
 
         /*
@@ -56,7 +64,6 @@
 
         /*
          [DISABLED - unsupported by IE] Audio card info
-         */
         audioFingerPrinting: function () {
             try {
                 var audioCtx = new (window.AudioContext || window.webkitAudioContext),
@@ -71,6 +78,7 @@
                 return "not supported";
             }
         },
+            */
 
         /*
          Get color depth of the device's screen
@@ -91,11 +99,11 @@
         /*
          Get list of fonts
          */
-        getFonts: function() {
+        getFonts: function(done) {
             document.addEventListener("DOMContentLoaded", function(event) {
                 var fontDetective = new Detector();
                 var fonts = fontDetective.testAllFonts();
-                return fonts;
+                done(fonts);
             });
         },
 
@@ -136,13 +144,17 @@
 
 
 
-        /*
-        Helper function to handle asynchronous call
-         */
+        // /*
+        // Helper function to handle asynchronous call
+        //  */
         generateAsyncHash: function(parameters, done) {
-            this.getCPUCores(function(cores) {
-               parameters.push(cores);
-               done(parameters);
+            // this.getCPUCores(function(cores) {
+            //    parameters.push(cores);
+            //    done(parameters);
+            // });
+            this.getFonts(function(fonts) {
+                parameters.push(fonts);
+                done(parameters);
             });
         },
 
@@ -155,18 +167,24 @@
             parameters.push(this.getTouchSupport());
             parameters.push(this.getColorDepth());
             parameters.push(this.getTimezoneOffset());
-            parameters.push(this.getFonts());
+            // Removed from here as it is async function
+            // parameters.push(this.getFonts());
             parameters.push(this.getOS());
             parameters.push(this.getOSVersion());
             parameters.push(this.isMobile());
             parameters.push(this.getCPUarchitecture());
             // Disabled as it is not supported by IE
             //parameters.push(this.audioFingerPrinting());
+            parameters.push(this.getCPUCores());
 
+
+            // Async version of generating hash
             this.generateAsyncHash(parameters, function(newParameters) {
                 var hash = murmurHash3.x86.hash32((newParameters).join("~~~"));
                 return done(hash, newParameters);
             });
+            // var hash = murmurHash3.x86.hash32((parameters).join("~~~"));
+            // return done(hash, parameters);
         }
 };
 
