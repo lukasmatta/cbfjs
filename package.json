@@ -6,15 +6,15 @@
   "scripts": {
     "commit": "git-cz",
     "watch:test": "npm test -- -w",
-    "_es6_test": "mocha src/cbfjs.test.js --compilers js:babel-register",
+    "_es6_test": "mocha src/cbfjs.test.js --compilers js:@babel/register",
     "test": "mocha --timeout 20000 src/cbfjs.test.js -r jsdom-global/register",
     "semantic-release": "semantic-release",
     "travis-deploy-once": "travis-deploy-once",
     "cover": "nyc npm test",
     "check-coverage": "nyc check-coverage --lines 40 --functions 40 --branches 40",
     "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov",
-    "prebuild": "rimraf dist",
-    "build": "npm-run-all --parallel build:*",
+    "prebuild": "./node_modules/.bin/rimraf dist",
+    "build": "./node_modules/.bin/npm-run-all --parallel build:*",
     "build:umd": "webpack --output-filename cbfjs.umd.js --mode development",
     "build:umd.min": "webpack --output-filename cbfjs.umd.min.js --mode production",
     "build:main": "babel --copy-files --out-dir dist --ignore *.test.js src"
@@ -34,18 +34,25 @@
   },
   "homepage": "https://github.com/lukasmatta/cbfjs#readme",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-loader": "^7.1.5",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
-    "babel-register": "^6.26.0",
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-decorators": "^7.0.0",
+    "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
+    "@babel/plugin-proposal-function-sent": "^7.0.0",
+    "@babel/plugin-proposal-json-strings": "^7.0.0",
+    "@babel/plugin-proposal-numeric-separator": "^7.0.0",
+    "@babel/plugin-proposal-throw-expressions": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-syntax-import-meta": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "babel-loader": "^8.0.0",
     "chai": "^4.1.2",
     "codecov": "^3.0.4",
     "commitizen": "^2.10.1",
     "cz-conventional-changelog": "^2.1.0",
     "ghooks": "^2.0.4",
-    "gulp": "^3.9.1",
-    "gulp-closure-compiler": "^0.4.0",
     "jsdom": "12.0.0",
     "jsdom-global": "3.0.2",
     "mocha": "^5.2.0",
@@ -72,8 +79,23 @@
   },
   "babel": {
     "presets": [
-      "es2015",
-      "stage-2"
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      "@babel/plugin-syntax-dynamic-import",
+      "@babel/plugin-syntax-import-meta",
+      "@babel/plugin-proposal-class-properties",
+      "@babel/plugin-proposal-json-strings",
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ],
+      "@babel/plugin-proposal-function-sent",
+      "@babel/plugin-proposal-export-namespace-from",
+      "@babel/plugin-proposal-numeric-separator",
+      "@babel/plugin-proposal-throw-expressions"
     ]
   },
   "files": [
