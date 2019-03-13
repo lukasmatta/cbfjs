@@ -1,5 +1,7 @@
 # CBFjs
 
+Library is currently outdated and will be updated soon.
+
 [![npm](https://img.shields.io/npm/v/cbfjs.svg)](https://www.npmjs.com/package/cbfjs)
 [![Travis](https://img.shields.io/travis/lukasmatta/cbfjs.svg)](https://travis-ci.org/lukasmatta/cbfjs)
 [![Codecov](https://img.shields.io/codecov/c/github/lukasmatta/cbfjs.svg)](https://codecov.io/gh/lukasmatta/cbfjs/)
@@ -32,6 +34,18 @@ new CBFjs().get(function(hash, components) {
   console.log(components) // an array of CBFjs components
 })
 ```
+
+## Features used
+ * Screen resolution
+ * Touch support
+ * Color depth
+ * Timezone offset
+ * Font list
+ * OS name
+ * OS version
+ * Mobile device detection
+ * CPU architecture
+ * Number of CPU cores
 
 ## Versioning
 
